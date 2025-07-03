@@ -188,13 +188,6 @@ class ContentExtractor(object):
                     # specifier, e.g. /2014/04/
                     return None
 
-        date_match = re.search(urls.STRICT_DATE_REGEX, url)
-        if date_match:
-            date_str = date_match.group(0)
-            datetime_obj = parse_date_str(date_str)
-            if datetime_obj:
-                return datetime_obj
-
         PUBLISH_DATE_TAGS = [
             {'attribute': 'property', 'value': 'rnews:datePublished',
              'content': 'content'},
@@ -217,9 +210,106 @@ class ContentExtractor(object):
             {'attribute': 'pubdate', 'value': 'pubdate',
              'content': 'datetime'},
             {'attribute': 'name', 'value': 'publish_date',
-             'content': 'content'},
+             'content': 'content'}
         ]
-        for known_meta_tag in PUBLISH_DATE_TAGS:
+
+        CUSTOM_DATE_TAGS = [
+            {
+                'attribute': 'name',
+                'value': 'iso-8601-publish-date',
+                'content': 'content'},
+            {
+                "attribute": "name",
+                "value": "date",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "DC.Date.issued",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "dcterms.issued",
+                "content": "content"
+            },
+            {
+                "attribute": "property",
+                "value": "article:published_time",
+                "content": "content"
+            },
+            {
+                "attribute": "property",
+                "value": "og:updated_time",
+                "content": "content"
+            },
+            {
+                "attribute": "itemprop",
+                "value": "dateCreated",
+                "content": "content"
+            },
+            {
+                "attribute": "itemprop",
+                "value": "uploadDate",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "last-modified",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "mod_date",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "creation_date",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "revision_date",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "entry_date",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "post_date",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "news_pub_date",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "timestamp",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "datetime",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "com.silverstripe.sapphire.published",
+                "content": "content"
+            },
+            {
+                "attribute": "name",
+                "value": "parsely-pub-date",
+                "content": "content"
+            }
+        ]
+        for known_meta_tag in PUBLISH_DATE_TAGS + CUSTOM_DATE_TAGS:
             meta_tags = self.parser.getElementsByTag(
                 doc,
                 attr=known_meta_tag['attribute'],
@@ -231,6 +321,13 @@ class ContentExtractor(object):
                 datetime_obj = parse_date_str(date_str)
                 if datetime_obj:
                     return datetime_obj
+
+        date_match = re.search(urls.STRICT_DATE_REGEX, url)
+        if date_match:
+            date_str = date_match.group(0)
+            datetime_obj = parse_date_str(date_str)
+            if datetime_obj:
+                return datetime_obj
 
         return None
 
@@ -282,8 +379,8 @@ class ContentExtractor(object):
 
         # title from og:title
         title_text_fb = (
-        self.get_meta_content(doc, 'meta[property="og:title"]') or
-        self.get_meta_content(doc, 'meta[name="og:title"]') or '')
+                self.get_meta_content(doc, 'meta[property="og:title"]') or
+                self.get_meta_content(doc, 'meta[name="og:title"]') or '')
 
         # create filtered versions of title_text, title_text_h1, title_text_fb
         # for finer comparison
@@ -887,7 +984,7 @@ class ContentExtractor(object):
         """Adds any siblings that may have a decent score to this node
         """
         if current_sibling.tag == 'p' and \
-                        len(self.parser.getText(current_sibling)) > 0:
+                len(self.parser.getText(current_sibling)) > 0:
             e0 = current_sibling
             if e0.tail:
                 e0 = copy.deepcopy(e0)
