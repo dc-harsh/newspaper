@@ -132,6 +132,8 @@ If no language is specified, Newspaper will attempt to auto detect a language.
     >>> print(a.title)
     港特首梁振英就住宅违建事件道歉
 
+Multi-lingual
+=============
 
 If you are certain that an *entire* news source is in one language, **go ahead and use the same api :)**
 
@@ -163,9 +165,6 @@ If you are certain that an *entire* news source is in one language, **go ahead a
     两年双免0手续0利率 科鲁兹掀背金融轻松购_武汉车市_武汉汽
     车网_新浪汽车_新浪网
 
-Support our library
--------------------
-`It takes only one click`_
 
 Docs
 ----
@@ -235,7 +234,6 @@ Features
       vi              Vietnamese
       zh              Chinese
 
-
 Get it now
 ----------
 
@@ -302,15 +300,6 @@ NOTE: You will still most likely need to install the following libraries via you
 
     $ curl https://raw.githubusercontent.com/codelucas/newspaper/master/download_corpora.py | python3
 
-Donations
----------
-
-Your donations are greatly appreciated! They will free me up to work on this project more,
-to take on things like: adding new features, bug-fix support, addressing concerns with the library.
-
-- My PayPal link: `https://www.paypal.me/codelucas`_
-- My `Venmo`_ handle: @Lucas-Ou-Yang
-
 Development
 -----------
 
@@ -333,13 +322,39 @@ Planning on tweaking our full-text algorithm? Add the ``fulltext`` parameter::
 
     $ python3 tests/unit_tests.py fulltext
 
-
 Demo
 ----
 
 View a working online demo here: http://newspaper-demo.herokuapp.com
 
 This is another working online demo: http://newspaper.chinazt.cc/
+
+
+Interested in proxies?
+======================
+
+Stay private, fast, and fully in control
+----------------------------------------
+`Click here to explore BestProxy`_, your go-to solution for premium residential proxies. BestProxy's proxies ensure smooth browsing, fast speeds, and total anonymity. `Get Started`_ today and experience the difference!
+
+.. image:: https://github.com/user-attachments/assets/1c6ef38c-f0c0-4db0-aad2-3ed9d6adf0b5
+        :target: https://bestproxy.com/?keyword=b2vgzl0r
+        :alt: Experience BestProxy, smooth browsing, fast speeds, and total anonymity.
+
+.. _`Click here to explore BestProxy`: https://bestproxy.com/?keyword=b2vgzl0r
+.. _`Get Started`: https://bestproxy.com/?keyword=b2vgzl0r
+
+
+Unlock the Web — the Smart Way
+------------------------------
+`Click here to see SerpApi, scrape search engines easily with SerpApi - Search API`_. 
+Scrape Google Search, Google News, Google Maps, and more!
+
+.. image:: https://github.com/user-attachments/assets/9a80eeb4-72a8-43f1-9413-93c7a47b2bf6
+        :target: https://serpapi.com/google-news-api?utm_source=newspaper3k_github
+        :alt: Scrape search engines easily with SerpApi - Search API. 
+
+.. _`Click here to see SerpApi, scrape search engines easily with SerpApi - Search API`: https://serpapi.com?utm_source=newspaper3k_github
 
 LICENSE
 -------
