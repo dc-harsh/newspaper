@@ -102,7 +102,7 @@ class ContentExtractor(object):
             search_str = re.sub('<[^<]+?>', '', search_str)
 
             # Remove original By statement
-            search_str = re.sub('[bB][yY][\:\s]|[fF]rom[\:\s]', '', search_str)
+            search_str = re.sub('[bB][yY][\:\s]|[bB][yY](?=[A-Z])|[fF]rom[\:\s]', '', search_str)
 
             search_str = search_str.strip()
 
