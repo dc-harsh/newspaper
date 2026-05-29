@@ -47,7 +47,7 @@ with codecs.open('README.rst', 'r', 'utf-8') as f:
 
 setup(
     name='wknewspaper',
-    version='0.3.0',
+    version='0.4.0',
     description='Simplified python article discovery & extraction.',
     long_description=readme,
     author='Lucas Ou-Yang',

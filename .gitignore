@@ -40,3 +40,11 @@ nosetests.xml
 .project
 .pydevproject
 venv
+CLAUDE.md
+.env
+
+# local-only test bed (kept out of repo; lives as a standalone project)
+testbed/
+
+# local working notes
+IMPROVEMENTS_TODO.md

@@ -154,10 +154,14 @@ def split_sentences(text):
     """Split a large string into sentences
     """
     import nltk.data
-    tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+    try:
+        tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+    except LookupError:
+        # NLTK >= 3.9 ships the punkt_tab tokenizer instead of punkt
+        tokenizer = nltk.data.load('tokenizers/punkt_tab/english')
 
     sentences = tokenizer.tokenize(text)
-    sentences = [x.replace('\n', '') for x in sentences if len(x) > 10]
+    sentences = [re.sub('[\n ]+', ' ', x) for x in sentences if len(x) > 10]
     return sentences
 
 

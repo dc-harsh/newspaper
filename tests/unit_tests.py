@@ -242,7 +242,8 @@ class ArticleTestCase(unittest.TestCase):
         self.assertEqual(LEN_IMGS, len(self.article.imgs))
         self.assertEqual(META_LANG, self.article.meta_lang)
         self.assertEqual(META_SITE_NAME, self.article.meta_site_name)
-        self.assertEqual('2013-11-27 00:00:00', str(self.article.publish_date))
+        # Fork prefers the precise <meta article:published_time> over the URL date
+        self.assertEqual('2013-11-27 08:36:32+00:00', str(self.article.publish_date))
 
     @print_test
     def test_meta_type_extraction(self):
